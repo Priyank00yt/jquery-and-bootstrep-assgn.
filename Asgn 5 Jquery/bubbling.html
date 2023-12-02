@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Bubbling and Capturing Example</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      border: 1px solid black;
+      position: relative;
+    }
+
+    #tickleSpot {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      position: absolute;
+      top: 50px;
+      left: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <div id="tickleSpot">Tickle Spot</div>
+  </div>
+
+  <script>
+    // Event bubbling
+    document.getElementById('tickleSpot').addEventListener('click', function(event) {
+      alert('You tickled the tickle spot!');
+    });
+
+    document.getElementById('box').addEventListener('click', function(event) {
+      alert('You tickled the box!');
+    });
+
+    // Event capturing
+    document.addEventListener('click', function(event) {
+      if (event.target === document.getElementById('tickleSpot')) {
+        alert('You tickled the tickle spot from anywhere!');
+      }
+    }, true);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Bubbling Example</title>
+  <style>
+    #list-container {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .list-item {
+      margin: 5px;
+      padding: 5px;
+      cursor: pointer;
+      border: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="list-container">
+    <div class="list-item">Item 1</div>
+    <div class="list-item">Item 2</div>
+    <div class="list-item">Item 3</div>
+  </div>
+
+  <script>
+    // Function to handle both list item and container click events
+    function handleClick(event) {
+      // Check if the clicked element has the 'list-item' class
+      if (event.target.classList.contains('list-item')) {
+        // If it does, display the index of the clicked item
+        alert(`Item clicked: ${Array.from(event.target.parentNode.children).indexOf(event.target) + 1}`);
+      } else {
+        // If not, display a message for the container click
+        alert('Container clicked');
+      }
+    }
+
+    // Attach click event to the list container
+    const listContainer = document.getElementById('list-container');
+    listContainer.addEventListener('click', handleClick);
+  </script>
+
+</body>
+</html>  -->
+
